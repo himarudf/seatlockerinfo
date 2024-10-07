@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1
+{
+    display: flex;
+    justify-content: center;
+}
+
+.container
+{
+    display: flex;
+    justify-content: center;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: repeat(6, 100px); /* Set grid 6 kolom */
+    gap: 10px;
+    margin: 20px;
+}
+.seat {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #000;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+}
+.Penuh {
+    background-color: red;
+}
+.Kosong {
+    background-color: green;
+    color: black;
+}
+
