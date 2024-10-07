@@ -3,35 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Seat Layout</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .layout {
-            display: grid;
-            grid-template-columns: repeat(6, 100px); /* Set grid 6 kolom */
-            gap: 10px;
-            margin: 20px;
-        }
-        .seat {
-            width: 100px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #000;
-            border-radius: 5px;
-            font-size: 18px;
-            color: white;
-        }
-        .Penuh {
-            background-color: red;
-        }
-        .Kosong {
-            background-color: green;
-        }
-    </style>
 </head>
 <body>
     <img class="logo" src="img/XL_Axiata_2014.svg.png" alt="logo">
@@ -41,7 +14,7 @@
     <div class="container">
         <img src="img/WhatsApp Image 2024-10-07 at 11.31.39.jpeg" alt="map">
         <div class="layout" id="layout">
-            <!-- Bangku akan diisi secara dinamis dari JavaScript -->
+            
         </div>
         <div class="legend">
             <div class="legend-item">
@@ -61,9 +34,9 @@
         const spreadsheetId = '12vjF6-2VhzD4XOPmUOyGfeanNZVTiVxPNkQz6ZWIzes';
         const range = 'Sheet1!A2:B36'; // Ganti sesuai rentang yang digunakan
 
-        const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+        const url = https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey};
 
-        async function fetchData() {
+        function fetchData() {
             const response = await fetch(url);
             const data = await response.json();
             const rows = data.values;
