@@ -5,13 +5,26 @@ body {
     padding: 0;
 }
 
-h1 {
+.logo
+{
+    width: 15rem;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.title {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    font-size: 2rem;
-    color: #333;
 }
+
+.title h1{
+    font-size: 3rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 10px 10px 10px;
+}
+
 
 img {
     border-radius: 10px;
@@ -30,9 +43,8 @@ img {
 
 @media (min-width: 768px) {
     .container {
-        flex-direction: row;
         gap: 20px;
-    }
+    }   
 }
 
 .layout {
@@ -69,6 +81,41 @@ img {
     background-color: green;
     color: black;
 }
+
+.legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px 20px 20px 20px ;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Use the same styles for the colors as the seat */
+.Kosong {
+    background-color: green;
+}
+
+.Penuh {
+    background-color: red;
+}
+
 
 .seat:hover {
     transform: scale(1.05);
