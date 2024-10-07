@@ -34,9 +34,9 @@
         const spreadsheetId = '12vjF6-2VhzD4XOPmUOyGfeanNZVTiVxPNkQz6ZWIzes';
         const range = 'Sheet1!A2:B36'; // Ganti sesuai rentang yang digunakan
 
-        const url = https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey};
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
 
-        function fetchData() {
+        async function fetchData() {
             const response = await fetch(url);
             const data = await response.json();
             const rows = data.values;
