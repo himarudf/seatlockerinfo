@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">            
+    <title>Seat Layout</title>
+</head>
+<body>
+    <img class="logo" src="img/XL_Axiata_2014.svg.png" alt="logo">
+    <a href="index.html">
+        <button class="btn">Seat Layout</button>
+      </a>      
+    <div class="title">
+        <h1>Locker Layout</h1>
+    </div>
+    <div class="container">
+        <!-- Gambar yang akan muncul sebagai pop-up -->
+        <img id="myImg" src="img/WhatsApp Image 2024-10-07 at 11.31.39.jpeg" alt="map" style="width:100%;max-width:300px">
+
+        <!-- Modal untuk menampilkan gambar pop-up -->
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+
+        <div class="layout" id="layout"></div>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color Kosong"></div>
+                <span>Kosong</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color Penuh"></div>
+                <span>Penuh</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get modal elements
+        var modal = document.getElementById('myModal');
+        var img = document.getElementById('myImg');
+        var modalImg = document.getElementById('img01');
+        var span = document.getElementsByClassName('close')[0];
+
+        // Ketika gambar ditekan, modal akan muncul
+        img.onclick = function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        }
+
+        // Ketika tombol 'close' ditekan, modal akan menutup
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        const apiKey = 'AIzaSyAkLOmDHDkynLNXfMXmHT8X6amZwmzI-EU';
+        const spreadsheetId = '12vjF6-2VhzD4XOPmUOyGfeanNZVTiVxPNkQz6ZWIzes';
+        const range = 'Sheet1!D2:E29'; // Ganti sesuai rentang yang digunakan
+
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+
+        async function fetchData() {
+            const response = await fetch(url);
+            const data = await response.json();
+            const rows = data.values;
+            return rows;
+        }
+
+        function renderSeats(rows) {
+            const layout = document.getElementById('layout');
+            layout.innerHTML = ''; // Hapus konten sebelumnya
+
+            rows.forEach(row => {
+                const seatNumber = row[0];  // Nomor bangku
+                const status = row[1];      // Status bangku (Occupied/Available)
+
+                // Buat elemen div untuk setiap bangku
+                const seatDiv = document.createElement('div');
+                seatDiv.classList.add('seat');
+                seatDiv.textContent = seatNumber;
+
+                // Tentukan status
+                if (status === 'Penuh') {
+                    seatDiv.classList.add('Penuh');
+                } else {
+                    seatDiv.classList.add('Kosong');
+                }
+
+                // Tambahkan ke layout
+                layout.appendChild(seatDiv);
+            });
+        }
+
+        // Ambil data dan render seat layout
+        fetchData().then(renderSeats).catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
